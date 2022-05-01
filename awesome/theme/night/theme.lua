@@ -15,66 +15,77 @@ local helpers = require("helpers")
 -- Aesthetic Night Theme
 ---------------------------
 
--- Load ~/.Xresources colors
-theme.xbackground = xrdb.background
-theme.xforeground = xrdb.foreground
-theme.xcolor0 = xrdb.color0
-theme.xcolor1 = xrdb.color1
-theme.xcolor2 = xrdb.color2
-theme.xcolor3 = xrdb.color3
-theme.xcolor4 = xrdb.color4
-theme.xcolor5 = xrdb.color5
-theme.xcolor6 = xrdb.color6
-theme.xcolor7 = xrdb.color7
-theme.xcolor8 = xrdb.color8
-theme.xcolor9 = xrdb.color9
-theme.xcolor10 = xrdb.color10
-theme.xcolor11 = xrdb.color11
-theme.xcolor12 = xrdb.color12
-theme.xcolor13 = xrdb.color13
-theme.xcolor14 = xrdb.color14
-theme.xcolor15 = xrdb.color15
-theme.darker_bg = "#0a1419"
-theme.lighter_bg = "#162026"
-theme.dashboard_fg = "#666c79"
+-- Rxyhn's Catppuccin Colorscheme
+local color_palette = {
+	rosewater = "#F5E0DC", -- Rosewater
+	flamingo = "#F2CDCD", -- Flamingo
+	mauve = "#DDB6F2", -- Mauve
+	pink = "#F5C2E7", -- Pink
+	red = "#F28FAD", -- Red
+	maroon = "#E8A2AF", -- Maroon
+	peach = "#F8BD96", -- Peach
+	yellow = "#FAE3B0", -- Yellow
+	green = "#ABE9B3", -- Green
+	blue = "#96CDFB", -- Blue
+	sky = "#89DCEB", -- Sky
+	teal = "#B5E8E0", -- Teal
+	lavender = "#C9CBFF", -- Lavender
+	white = "#c5c8c9",
+	black0 = "#0d1416",
+	black1 = "#111719",
+	black2 = "#131a1c",
+	black3 = "#192022",
+	black4 = "#202729",
+	gray0 = "#363D3E",
+	gray1 = "#4A5051",
+	gray2 = "#5C6262",
+}
+
+theme.xbackground = color_palette.black2
+theme.xforeground = color_palette.white
+theme.xcolor0 = color_palette.gray0
+theme.xcolor1 = color_palette.red
+theme.xcolor2 = color_palette.green
+theme.xcolor3 = color_palette.yellow
+theme.xcolor4 = color_palette.blue
+theme.xcolor5 = color_palette.mauve
+theme.xcolor6 = color_palette.pink
+theme.xcolor7 = color_palette.white
+theme.xcolor8 = color_palette.gray1
+theme.xcolor9 = color_palette.maroon
+theme.xcolor10 = color_palette.teal
+theme.xcolor11 = color_palette.peach
+theme.xcolor12 = color_palette.sky
+theme.xcolor13 = color_palette.lavender
+theme.xcolor14 = color_palette.flamingo
+theme.xcolor15 = color_palette.white
+theme.darker_bg = color_palette.black1
+theme.lighter_bg = color_palette.black3
+theme.dashboard_fg = color_palette.gray2
 theme.transparent = "#00000000"
 
 -- Wallpaper
-theme.wallpaper = theme.xcolor8
-theme.alt_wallpaper = theme.darker_bg
+--theme.wallpaper = gfs.get_configuration_dir() .. "theme/assets/night.jpg"
+theme.wallpaper = gfs.get_configuration_dir() .. "theme/assets/golang_wall.png"
+
+
 
 -- PFP
 theme.pfp = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/pfp.png")
 
--- Themes icon
-theme.day = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/day.png")
-theme.night = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/night.png")
-
 -- Awesome Logo
-theme.awesome_logo = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/awesome.png")
+--theme.awesome_logo = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/awesome_logo.svg")
+theme.awesome_logo = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/golang_icon.svg")
 
--- Notifications bell icon
-theme.notification_bell_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/notification-bell.png")
-
--- Notifications icon
-theme.notification_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/notification.png")
-
--- Arc widget icon
-theme.temp = gfs.get_configuration_dir() .. "theme/assets/icons/temp.png"
-theme.cpu = gfs.get_configuration_dir() .. "theme/assets/icons/cpu.png"
-theme.ram = gfs.get_configuration_dir() .. "theme/assets/icons/ram.png"
-
--- Popup notifications icon
-theme.volume_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/volume.png")
-theme.volume_muted_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/mute.png")
-theme.brightness_icon = gears.surface.load_uncached(gfs.get_configuration_dir() .. "theme/assets/icons/brightness.png")
 
 -- Fonts
-theme.font_name = "Iosevka Nerd Font Mono "
+theme.font_name = "HackNerdFont"
+--theme.font_name = "Iosevka Nerd Font Mono "
 theme.font = theme.font_name .. "8"
-theme.icon_font_name = "Material Icons "
+theme.icon_font_name = "Material Design Icons Desktop "
 theme.icon_font = theme.icon_font_name .. "18"
-theme.font_taglist = theme.icon_font_name .. "13"
+theme.font_taglist = theme.icon_font_name .. "16"
+theme.prompt_font = theme.font_name .. "Bold 10"
 
 -- Background Colors
 theme.bg_dark = theme.darker_bg
@@ -91,7 +102,7 @@ theme.hover_effect = theme.accent .. "44"
 
 -- Foreground Colors
 theme.fg_normal = theme.xforeground
-theme.fg_focus = theme.xforeground
+theme.fg_focus = theme.accent
 theme.fg_urgent = theme.xcolor1
 theme.fg_minimize = theme.xcolor0
 
@@ -104,59 +115,23 @@ theme.widget_border_width = dpi(2)
 theme.widget_border_color = theme.darker_bg
 
 -- Radius
-theme.border_radius = dpi(12)
-theme.client_radius = dpi(10)
-theme.dashboard_radius = dpi(10)
-theme.widget_radius = dpi(10)
-
--- Taglist
-local taglist_square_size = dpi(0)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg_normal)
-theme.taglist_font = theme.font_taglist
-theme.taglist_bg = theme.lighter_bg
-
-theme.taglist_bg_focus = theme.lighter_bg
-theme.taglist_fg_focus = theme.xcolor3
-
-theme.taglist_bg_urgent = theme.lighter_bg
-theme.taglist_fg_urgent = theme.xcolor6
-
-theme.taglist_bg_occupied = theme.lighter_bg
-theme.taglist_fg_occupied = theme.xcolor6
-
-theme.taglist_bg_empty = theme.lighter_bg
-theme.taglist_fg_empty = theme.xcolor8
-
-theme.taglist_bg_volatile = transparent
-theme.taglist_fg_volatile = theme.xcolor11
-
-theme.taglist_disable_icon = true
-
-theme.taglist_shape_focus = helpers.rrect(theme.widget_radius)
-theme.taglist_shape_empty = helpers.rrect(theme.widget_radius)
-theme.taglist_shape = helpers.rrect(theme.widget_radius)
-theme.taglist_shape_urgent = helpers.rrect(theme.widget_radius)
-theme.taglist_shape_volatile = helpers.rrect(theme.widget_radius)
-
--- Pacman taglist
-theme.pacman = theme.xcolor3
-theme.ghost = theme.accent
-theme.dots = theme.xcolor8
+theme.border_radius = dpi(10)
+theme.client_radius = theme.border_radius
+theme.dashboard_radius = theme.border_radius
+theme.widget_radius = theme.border_radius
 
 -- Titlebars
 theme.titlebar_enabled = true
-theme.titlebar_size = dpi(45)
-theme.titlebar_color = theme.darker_bg
-theme.titlebar_unfocused = theme.xcolor0
+theme.titlebar_bg = theme.xbackground
+theme.titlebar_fg = theme.xforeground
 
 -- Music
 theme.music_bg = theme.xbackground
 theme.music_bg_accent = theme.darker_bg
 theme.music_accent = theme.lighter_bg
 
--- Pop up notifications
-theme.pop_size = dpi(180)
+-- Pop up
+theme.pop_size = dpi(190)
 theme.pop_bg = theme.xbackground
 theme.pop_vol_color = theme.accent
 theme.pop_brightness_color = theme.accent
@@ -174,32 +149,35 @@ theme.tooltip_box_margin = dpi(10)
 theme.tooltip_border_radius = theme.border_radius
 theme.tooltip_box_border_radius = theme.widget_radius
 
+-- Battery Indicator
+theme.battery_happy_color = theme.xcolor2
+theme.battery_sad_color = theme.xcolor1
+theme.battery_ok_color = theme.xcolor3
+theme.battery_charging_color = theme.accent
+
 -- Edge snap
 theme.snap_bg = theme.xcolor8
 theme.snap_shape = helpers.rrect(0)
 
 -- Prompts
-theme.prompt_bg = transparent
+theme.prompt_bg = theme.transparent
 theme.prompt_fg = theme.xforeground
 
 -- Dashboard
-theme.dashboard_width = dpi(300)
 theme.dashboard_bg = theme.darker_bg
 theme.dashboard_box_bg = theme.lighter_bg
 theme.dashboard_box_fg = theme.dashboard_fg
 
 -- Control center
-theme.control_center_width = dpi(410)
-theme.control_center_height = dpi(595)
 theme.control_center_radius = dpi(20)
-theme.control_center_widget_radius = dpi(20)
+theme.control_center_widget_radius = theme.border_radius
 theme.control_center_bg = theme.darker_bg
 theme.control_center_widget_bg = theme.xbackground
 theme.control_center_button_bg = theme.lighter_bg
 
 -- Playerctl
-theme.playerctl_ignore = {"firefox", "qutebrowser", "chromium", "brave"}
-theme.playerctl_player = {"spotify", "mpd", "%any"}
+theme.playerctl_ignore = { "firefox", "qutebrowser", "chromium", "brave" }
+theme.playerctl_player = { "spotify", "mpd", "%any" }
 theme.playerctl_update_on_activity = true
 theme.playerctl_position_update_interval = 1
 
@@ -238,11 +216,19 @@ theme = theme_assets.recolor_layout(theme, theme.xforeground)
 theme.useless_gap = dpi(5)
 
 -- Wibar
-theme.wibar_width = dpi(45)
 theme.wibar_bg = theme.darker_bg
-theme.wibar_widget_bg = theme.xbackground
-theme.wibar_widget_alt_bg = theme.lighter_bg
-theme.wibar_position = "left"
+theme.wibar_widget_bg = theme.lighter_bg
+
+-- Dock
+theme.dock_bg = theme.wibar_bg
+theme.dock_focused_bg = theme.lighter_bg
+theme.dock_accent = theme.accent
+
+-- Systray
+theme.systray_icon_spacing = dpi(15)
+theme.bg_systray = theme.wibar_bg
+theme.systray_icon_size = dpi(15)
+theme.systray_max_rows = 2
 
 -- Tabs
 theme.mstab_bar_height = dpi(60)
@@ -260,23 +246,22 @@ theme.tabbar_size = 40
 theme.mstab_bar_ontop = true
 
 -- Notifications
-theme.notification_spacing = 24
-theme.notification_border_radius = dpi(6)
+theme.notification_spacing = dpi(20)
+theme.notification_border_radius = theme.border_radius
 theme.notification_border_width = dpi(0)
 
 -- Notif center
 theme.notif_center_radius = theme.border_radius
 theme.notif_center_box_radius = theme.notif_center_radius / 2
-theme.notif_center_notifs_bg = theme.darker_bg
-theme.notif_center_notifs_bg_accent = theme.xbackground
-theme.notif_center_notifs_accent = theme.lighter_bg
+theme.notif_center_notifs_bg = theme.lighter_bg
+theme.notif_center_notifs_accent = theme.xcolor0
 
 -- Swallowing
 theme.dont_swallow_classname_list = {
-    "firefox",
-    "gimp",
-    "Google-chrome",
-    "Thunar"
+	"firefox",
+	"gimp",
+	"Google-chrome",
+	"Thunar",
 }
 
 -- Layout Machi
@@ -287,7 +272,7 @@ theme.machi_editor_border_opacity = 0.25
 theme.machi_editor_active_opacity = 0.25
 
 -- Tag Preview
-theme.tag_preview_client_border_radius = dpi(6)
+theme.tag_preview_client_border_radius = dpi(5)
 theme.tag_preview_client_opacity = 0.1
 theme.tag_preview_client_bg = theme.xbackground
 theme.tag_preview_client_border_color = theme.darker_bg
@@ -300,7 +285,7 @@ theme.tag_preview_widget_border_width = theme.widget_border_width * 0
 theme.tag_preview_widget_margin = dpi(10)
 
 -- Task Preview
-theme.task_preview_widget_border_radius = dpi(10)
+theme.task_preview_widget_border_radius = theme.border_radius
 theme.task_preview_widget_bg = theme.xbackground
 theme.task_preview_widget_border_color = theme.widget_border_color
 theme.task_preview_widget_border_width = theme.widget_border_width * 0

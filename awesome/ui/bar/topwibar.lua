@@ -103,10 +103,10 @@ awful.screen.connect_for_each_screen(function(s)
 
 	-- battery
 	local charge_icon = wibox.widget({
-		markup = helpers.colorize_text("󱐋", beautiful.xbackground .. "80"),
+		markup = helpers.colorize_text("", beautiful.xbackground .. "80"),
 		align = "center",
 		valign = "center",
-		font = beautiful.icon_font_name .. "16",
+		font = beautiful.icon_font_name .. "Round 16",
 		widget = wibox.widget.textbox,
 		visible = false,
 	})
@@ -192,48 +192,16 @@ awful.screen.connect_for_each_screen(function(s)
 		widget = wibox.widget.separator,
 	})
 
-	-- clock
-	local hours = wibox.widget.textclock("%H")
-	local minutes = wibox.widget.textclock("%M")
+	-- Clock
+	local clock = wibox.widget({
+		font = beautiful.font_name .. "Bold 12",
+		format = "%I:%M %p",
+		align = "center",
+		valign = "center",
+		widget = wibox.widget.textclock,
+	})
 
-	local make_little_dot = function(color)
-		return wibox.widget({
-			bg = color,
-			forced_width = dpi(2),
-			forced_height = dpi(2),
-			shape = gears.shape.circle,
-			widget = wibox.container.background,
-		})
-	end
-
-	local time = {
-		{
-			font = beautiful.font_name .. "Bold 12",
-			align = "right",
-			valign = "center",
-			widget = hours,
-		},
-		{
-			nil,
-			{
-				make_little_dot(beautiful.xforeground),
-				make_little_dot(beautiful.xforeground),
-				spacing = dpi(4),
-				widget = wibox.layout.fixed.vertical,
-			},
-			expand = "none",
-			widget = wibox.layout.align.vertical,
-		},
-		{
-			font = beautiful.font_name .. "Bold 12",
-			align = "left",
-			valign = "center",
-			widget = minutes,
-		},
-		spacing = dpi(4),
-		layout = wibox.layout.fixed.horizontal,
-	}
-
+	-- Layoutbox
 	local layoutbox_buttons = gears.table.join(
 		-- Left click
 		awful.button({}, 1, function(c)
@@ -259,10 +227,7 @@ awful.screen.connect_for_each_screen(function(s)
 
 	local layoutbox = wibox.widget({
 		s.mylayoutbox,
-		left = dpi(2),
-		right = dpi(2),
-		top = dpi(3),
-		bottom = dpi(3),
+		margins = dpi(2),
 		widget = wibox.container.margin,
 	})
 
@@ -271,7 +236,7 @@ awful.screen.connect_for_each_screen(function(s)
 	local right_container = wibox.widget({
 		{
 			{
-				time,
+				clock,
 				vertical_separator,
 				layoutbox,
 				layout = wibox.layout.fixed.horizontal,
@@ -279,8 +244,8 @@ awful.screen.connect_for_each_screen(function(s)
 			},
 			top = dpi(4),
 			bottom = dpi(4),
-			left = dpi(8),
-			right = dpi(8),
+			left = dpi(10),
+			right = dpi(10),
 			widget = wibox.container.margin,
 		},
 		shape = function(cr, width, height)

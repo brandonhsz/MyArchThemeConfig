@@ -31,24 +31,15 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ modkey, shift }, "f", function()
 		awful.spawn(file_manager)
 	end, { description = "open file manager", group = "launcher" }),
-	awful.key({ modkey }, "w", function()
+	awful.key({ modkey, shift }, "w", function()
 		awful.spawn.with_shell(browser)
 	end, { description = "open web browser", group = "launcher" }),
+	awful.key({ modkey }, "d", function()
+		awful.spawn.with_shell("rofi -no-lazy-grab -show drun -modi drun -theme " .. gfs.get_configuration_dir() .. "configuration/rofi.rasi")
+	end, { description = "open app launcher", group = "launcher" }),
 	awful.key({ modkey, shift }, "x", function()
 		awful.spawn.with_shell("xcolor-pick")
 	end, { description = "open color picker", group = "launcher" }),
-	awful.key({ modkey }, "d", function()
-		central_panel:toggle()
-	end, { description = "toggle dashboard", group = "launcher" }),
-	awful.key({ modkey, shift }, "t", function()
-		systray_toggle()
-	end, { description = "toggle systray", group = "launcher" }),
-
-	--rofi
-awful.key({modkey, shift}, "d", function()
-            awful.spawn(launcher)
-        end,
-        {description = "open applications menu", group = "launcher"}),
 })
 
 -- Client and Tabs Bindings
@@ -136,7 +127,7 @@ awful.keyboard.append_global_keybindings({
 		awful.spawn.with_shell("screensht full")
 	end, { description = "take a full screenshot", group = "hotkeys" }),
 
-	awful.key({ modkey, shift }, "p", function()
+	awful.key({ alt }, "Print", function()
 		awful.spawn.with_shell("screensht area")
 	end, { description = "take a area screenshot", group = "hotkeys" }),
 
@@ -144,6 +135,11 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ modkey, ctrl }, "l", function()
 		lock_screen_show()
 	end, { description = "lock screen", group = "hotkeys" }),
+
+	-- Exit screen
+	awful.key({ modkey }, "x", function()
+		awesome.emit_signal("module::exit_screen:show")
+	end, { description = "exit screen", group = "hotkeys" }),
 })
 
 -- Awesome stuff
@@ -151,6 +147,15 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ modkey }, "F1", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 	awful.key({ modkey, ctrl }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey, ctrl }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
+	awful.key({ modkey, shift }, "d", function()
+		central_panel:toggle()
+	end, { description = "toggle dashboard", group = "awesome" }),
+	awful.key({ modkey, shift }, "t", function()
+		systray_toggle()
+	end, { description = "toggle systray", group = "awesome" }),
+	awful.key({ modkey }, "grave", function()
+		awful.spawn.with_shell(music_client)
+	end, { description = "open music client", group = "awesome" }),
 })
 
 -- Layout Machi

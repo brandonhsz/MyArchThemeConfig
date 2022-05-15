@@ -20,7 +20,7 @@ theme = themes[2]
 terminal = "kitty"
 editor = terminal .. " -e " .. os.getenv("EDITOR")
 vscode = "code"
-browser = "microsoft-stable-edge"
+browser = "microsoft-edge-stable"
 web_search_cmd = "xdg-open https://duckduckgo.com/?q="
 file_manager = "nautilus"
 music_client = terminal .. " --class music -e ncmpcpp"

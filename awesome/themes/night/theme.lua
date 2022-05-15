@@ -43,10 +43,11 @@ theme.transparent = "#00000000"
 theme.wallpaper = gfs.get_configuration_dir() .. "themes/assets/golang_wall.jpg"
 
 -- PFP
-theme.pfp = gears.surface.load_uncached(gfs.get_configuration_dir() .. "themes/assets/pfp.png")
+-- theme.pfp = gears.surface.load_uncached(gfs.get_configuration_dir() .. "themes/assets/pfp.png")
+theme.pfp = gears.surface.load_uncached(gfs.get_configuration_dir() .. "themes/assets/golang_ppf2.png")
 
 -- Awesome Logo
-theme.awesome_logo = gears.surface.load_uncached(gfs.get_configuration_dir() .. "icons/awesome_logo.svg")
+theme.awesome_logo = gears.surface.load_uncached(gfs.get_configuration_dir() .. "icons/golang_gopher_src_logo_icon_168154.svg")
 
 -- Fonts
 theme.font_name = "HackNerdFont"

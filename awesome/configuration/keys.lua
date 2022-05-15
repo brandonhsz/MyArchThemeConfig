@@ -31,7 +31,7 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ modkey, shift }, "f", function()
 		awful.spawn(file_manager)
 	end, { description = "open file manager", group = "launcher" }),
-	awful.key({ modkey, shift }, "w", function()
+	awful.key({ modkey }, "w", function()
 		awful.spawn.with_shell(browser)
 	end, { description = "open web browser", group = "launcher" }),
 	awful.key({ modkey }, "d", function()
@@ -127,7 +127,7 @@ awful.keyboard.append_global_keybindings({
 		awful.spawn.with_shell("screensht full")
 	end, { description = "take a full screenshot", group = "hotkeys" }),
 
-	awful.key({ alt }, "Print", function()
+	awful.key({ modkey, shift  }, "p", function()
 		awful.spawn.with_shell("screensht area")
 	end, { description = "take a area screenshot", group = "hotkeys" }),
 

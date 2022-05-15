@@ -18,6 +18,14 @@
 
 #### Install Dependencies
 
+<blockquote>
+  You may install paru or just install all the needed dependencies with yay just set yay instead of paru.
+  
+  <br>
+  <strong>Optional</strong>
+  <pre>yay -S paru </pre>
+</blockquote>
+
 <pre>paru -S awesome-git picom-git kitty todo-bin papirus-icon-theme acpi acpid \
 acpi_call wireless_tools jq inotify-tools polkit-gnome xdotool xclip \
 brightnessctl alsa-utils alsa-tools pulseaudio pulseaudio-alsa scrot \
